@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library | The Odin Project</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+</head>
+<body> 
+    <button id="open">New Book</button> 
+
+    <dialog>
+        <form action="#" method="post" class="inputs">
+            <input type="text" id="title" placeholder="title" required>
+            <input type="text" id="author" placeholder="author" required>
+            <input type="text" id="nmbPages" placeholder="number of pages" required>
+            <div class="haveReadChekbox">
+                <h2 >Do you have read it? </h2>
+                <div>
+                    <label for="yesReadIt">yes i read it</label>
+                    <input type="radio" id="yesReadIt" name="haveRead" value="yes" checked>
+                </div>
+                <div>
+                    <label for="noDont">i didn't</label>
+                    <input type="radio" id="noDont" name="haveRead" value="no">
+                </div>
+            </div>
+            <div class="buttons">
+                <button type="submit" id="addBtn" >add a book</button>
+                <button type="button" id="close" formmethod="dialog">close</button>
+            </div>
+        </form>
+    </dialog>
+
+    <section class="myBooks">
+        <h2 class="title">My Books</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>title</th>
+                    <th>author</th>
+                    <th>number pages</th>
+                    <th>have read</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>0</td>
+                    <td>the Hobbit</td>
+                    <td>J.R.R</td>
+                    <td>265</td>
+                    <td>yes i have</td>
+                </tr>
+            </tbody>
+        </table>
+   
+    </section>        
+
+</body>
+</html>
