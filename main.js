@@ -38,35 +38,37 @@ function addBookToLibrary() {
 
     let newBook = new Book(title.value, author.value, nmbPages.value, haveRead);
     
-    myLibrary.push(newBook);
+    myLibrary.push(newBook); 
     display();
 }
 
 const tbody = document.querySelector('tbody');
 
 function display() {
-    let index = 0;
     let books = '';
-    myLibrary.forEach((book) => {
+    myLibrary.forEach((book, index) => {
         books += `
                 <tr>
-                    <td>${index++}</td>
+                    <td>${index}</td>
                     <td>${book.title}</td>
                     <td>${book.author}</td>
                     <td>${book.nmbPages}</td>
                     <td>${book.haveRead}</td>
+                    <td>
+                        <button data-index="${index}" id="deleteBtn" onclick ="deleteBook(this.dataset.index)">
+                            delete  
+                        </button>
+                    </td>
                 </tr>
         `;
     });
     tbody.innerHTML = books;
 }
 
-display();
 
 
 let open = document.querySelector('#open');
 let dialog = document.querySelector('dialog');
-git 
 open.onclick = () => {
     dialog.showModal();
 }
@@ -76,4 +78,8 @@ close.onclick = () => {
     dialog.close();
 }
 
-
+// let deleteBtn = document.querySelector('#deleteBtn');
+function deleteBook(index) {
+    myLibrary.splice(index, 1);
+    display();
+}
