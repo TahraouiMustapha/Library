@@ -53,7 +53,7 @@ input:focus {
     gap: 16px;
 }
 
-.buttons button , #open, #deleteBtn {
+.buttons button , #open, #deleteBtn, .readStatus {
     padding:8px 16px;
     border:none;
     outline:none;
@@ -104,3 +104,13 @@ td, th {
     font-size: 24px;
 }
 
+.readStatus {
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 0px 10px #dc2626;
+    color: #d44a4a;
+}
+
+.readStatus.read{
+    box-shadow: 0px 0px 10px #22c55e;
+    color: #22c55e;
+}
