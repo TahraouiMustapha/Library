@@ -46,14 +46,28 @@ const tbody = document.querySelector('tbody');
 
 function display() {
     let books = '';
+    let readStatusClass = '';
+    let reposReadBtn = '';
+    
     myLibrary.forEach((book, index) => {
+        if(book.haveRead === 'yes') {
+            readStatusClass = 'readStatus read';
+            reposReadBtn = 'read';
+        } else {
+            readStatusClass = 'readStatus';
+            reposReadBtn = 'not read';
+        }
         books += `
                 <tr>
                     <td>${index}</td>
                     <td>${book.title}</td>
                     <td>${book.author}</td>
                     <td>${book.nmbPages}</td>
-                    <td>${book.haveRead}</td>
+                    <td>
+                        <button class="${readStatusClass}" data-index="${index}" onclick ="changeReadStatus(this)">
+                            ${reposReadBtn}  
+                        </button>
+                    </td>
                     <td>
                         <button data-index="${index}" id="deleteBtn" onclick ="deleteBook(this.dataset.index)">
                             delete  
@@ -78,8 +92,22 @@ close.onclick = () => {
     dialog.close();
 }
 
-// let deleteBtn = document.querySelector('#deleteBtn');
 function deleteBook(index) {
     myLibrary.splice(index, 1);
+    display();
+}
+
+//create function on Book prototype instance
+Book.prototype.toggleReadStatus = function () {
+    if(this.haveRead === 'no') {
+        this.haveRead = 'yes';
+    } else {
+        this.haveRead = 'no';
+    }
+}
+
+function changeReadStatus(btn) {
+    let index = btn.dataset.index;
+    myLibrary[index].toggleReadStatus();
     display();
 }
