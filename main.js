@@ -5,17 +5,28 @@ const haveReadValues = document.getElementsByName('haveRead');
 
 const myLibrary = []; 
 
+class Book {
+    constructor (title, author, nmbPages, haveRead) {
+        this.title = title;
+        this.author = author;
+        this.nmbPages = nmbPages;
+        this.haveRead = haveRead;
+    }
 
-function Book(title, author, nmbPages, haveRead) {
-    this.title = title;
-    this.author = author;
-    this.nmbPages = nmbPages;
-    this.haveRead = haveRead;
-
-    this.info = function() {
+    info() {
         return this.title +" by "+ this.author +", "+ this.nmbPages +", "+this.haveRead;
     }
+    
+    toggleReadStatus() {
+        if(this.haveRead === 'no') {
+            this.haveRead = 'yes';
+        } else {
+            this.haveRead = 'no';
+        }
+    }
 }
+
+
 
 const addBtn = document.querySelector("#addBtn");
 addBtn.addEventListener("click", (e) => {
@@ -97,14 +108,6 @@ function deleteBook(index) {
     display();
 }
 
-//create function on Book prototype instance
-Book.prototype.toggleReadStatus = function () {
-    if(this.haveRead === 'no') {
-        this.haveRead = 'yes';
-    } else {
-        this.haveRead = 'no';
-    }
-}
 
 function changeReadStatus(btn) {
     let index = btn.dataset.index;
